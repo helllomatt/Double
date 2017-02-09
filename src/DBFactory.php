@@ -2,6 +2,7 @@
 /**
  * database.factory.php - Database factory class
  *
+ * @package Database
  */
 
 namespace Database;
