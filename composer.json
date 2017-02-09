@@ -1,0 +1,19 @@
+{
+    "name": "helllomatt/db",
+    "description": "Basic MySql database library",
+    "version": "1.0",
+    "keywords": ["database", "db", "mysql", "library"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "helllomatt",
+            "email": "me@helllomatt.com",
+            "homepage": "http://helllomatt.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Database\\": "src/"
+        }
+    }
+}
