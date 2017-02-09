@@ -2,16 +2,15 @@
 /**
  * query-builder.class.php - Query building for MySQL
  *
- * @package Database
+ * @package Double
  */
-
-namespace Database;
+namespace Double;
 
 class MySQLQueryBuilder {
     /**
      * The injected Query object
      *
-     * @var Database\Query
+     * @var Double\Query
      */
     private $query;
 
@@ -32,8 +31,8 @@ class MySQLQueryBuilder {
     /**
      * Constructs the class, sending the query on it's way to be built
      *
-     * @param Database\Query $query
-     * @return Database\MySQLQueryBuilder
+     * @param Double\Query $query
+     * @return Double\MySQLQueryBuilder
      */
     public function __construct(Query $query) {
         $this->query = $query;
@@ -54,7 +53,7 @@ class MySQLQueryBuilder {
      * Based on the type of query requested, builds the query
      *
      * @param string $type
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     private function build($type) {
         switch (strtolower($type)) {
@@ -145,7 +144,7 @@ class MySQLQueryBuilder {
     /**
      * Builds a SELECT query for MySQL
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_select() {
         $q = $this->query;
@@ -170,7 +169,7 @@ class MySQLQueryBuilder {
     /**
      * Builds a SELECT COUNT(*) query for MySQL
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_count() {
         $q = $this->query;
@@ -195,7 +194,7 @@ class MySQLQueryBuilder {
     /**
      * Builds an UPDATE query for MySQL
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_update() {
         $q = $this->query;
@@ -215,7 +214,7 @@ class MySQLQueryBuilder {
     /**
      * Builds a DELETE query for MySQL
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_delete() {
         $q = $this->query;
@@ -234,7 +233,7 @@ class MySQLQueryBuilder {
     /**
      * Builds an INSERT query for MySQL
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_insert($ignore = false) {
         $q = $this->query;
@@ -272,7 +271,7 @@ class MySQLQueryBuilder {
     /**
      * Takes what the developer gave, and "builds" it.
      *
-     * @return Database\MySQLQueryBuilder
+     * @return Double\MySQLQueryBuilder
      */
     public function build_verbatim() {
         $this->sql = sprintf("%s;", rtrim($this->query->sql, ";"));

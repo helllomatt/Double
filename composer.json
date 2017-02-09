@@ -1,5 +1,5 @@
 {
-    "name": "helllomatt/db",
+    "name": "helllomatt/double",
     "description": "Basic MySql database library",
     "version": "1.0",
     "keywords": ["database", "db", "mysql", "library"],
@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Database\\": "src/"
+            "Double\\": "src/"
         }
     },
     "require-dev": {

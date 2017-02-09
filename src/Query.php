@@ -2,10 +2,9 @@
 /**
  * query.class.php - Database query class
  *
- * @package Database
+ * @package Double
  */
-
-namespace Database;
+namespace Double;
 
 use SqlFormatter;
 use PDO;
@@ -155,7 +154,7 @@ class Query {
      * Constructs the query, defining the type of query to perform
      *
      * @param string $type
-     * @return Database\Query
+     * @return Double\Query
      */
     public function __construct($type, Connection $connection = null) {
         $this->type = strtoupper($type);
@@ -180,7 +179,7 @@ class Query {
      * Defines the table prefix to use
      *
      * @param string $prefix
-     * @return Database\Query
+     * @return Double\Query
      */
     public function set_prefix($prefix = "") {
         $this->_prefix = $prefix;
@@ -192,7 +191,7 @@ class Query {
      *
      * @param string $sql
      * @param array $parameters
-     * @return Database\Query
+     * @return Double\Query
      */
     public function sql($sql, array $parameters = []) {
         $this->sql = $sql;
@@ -204,7 +203,7 @@ class Query {
      * Defines the table to insert data into
      *
      * @param string $table
-     * @return Database\Query
+     * @return Double\Query
      */
     public function into($table) {
         $this->table = $table;
@@ -215,7 +214,7 @@ class Query {
      * Defines the table to select data from
      *
      * @param string $table
-     * @return Database\Query
+     * @return Double\Query
      */
     public function from($table) {
         $this->table = $table;
@@ -226,7 +225,7 @@ class Query {
      * Defines the table to perform queries on
      *
      * @param string $table
-     * @return Database\Query
+     * @return Double\Query
      */
     public function table($table) {
         $this->table = $table;
@@ -237,7 +236,7 @@ class Query {
      * Defines the columns to select
      *
      * @param array $columns
-     * @return Database\Query
+     * @return Double\Query
      */
     public function columns(array $columns = []) {
         $this->columns = $columns;
@@ -249,7 +248,7 @@ class Query {
      *
      * @param string $clause
      * @param array $parameters
-     * @return Database\Query
+     * @return Double\Query
      */
     public function where($clause = "", array $parameters = []) {
         $this->clause = $clause;
@@ -262,7 +261,7 @@ class Query {
      *
      * @param string $column
      * @param string $direction
-     * @return Database\Query
+     * @return Double\Query
      */
     public function order_by($column, $direction) {
         $this->order_by = [$column, $direction];
@@ -274,7 +273,7 @@ class Query {
      *
      * @param int $start
      * @param int $amount
-     * @return Database\Query
+     * @return Double\Query
      */
     public function limit($start, $amount = null) {
         if ($amount == null) $this->limit = $start;
@@ -288,7 +287,7 @@ class Query {
      * @param string $type
      * @param string $table
      * @param string $on
-     * @return Database\Query
+     * @return Double\Query
      */
     public function join($type, $table, $on) {
         $this->joins[] = [$type, $table, $on];
@@ -328,7 +327,7 @@ class Query {
      *
      * @param string $column
      * @param mixed $value
-     * @return Database\Query
+     * @return Double\Query
      */
     public function set($column, $value) {
         $generated_key = sprintf(":%u", mt_rand());
@@ -345,7 +344,7 @@ class Query {
      * Sets information to INSERT records with
      *
      * @param array $values
-     * @return Database\Query
+     * @return Double\Query
      */
     public function values(array $values = []) {
         $record_values = [];
@@ -366,7 +365,7 @@ class Query {
      * Defines a match for searching
      *
      * @param  array $columns
-     * @return Database\Query
+     * @return Double\Query
      */
     public function where_match(array $columns = []) {
         $this->clause = implode(",", $columns);
@@ -378,7 +377,7 @@ class Query {
      *
      * @param  string  $text
      * @param  boolean $unl
-     * @return Database\Query
+     * @return Double\Query
      */
     public function against($text, $unl = true) {
         if ($unl) {
@@ -392,7 +391,7 @@ class Query {
     /**
      * Executes the query to the database
      *
-     * @return Database\Query
+     * @return Double\Query
      */
     public function execute() {
         $sql = (new MySQLQueryBuilder($this))->get();
@@ -474,7 +473,7 @@ class Query {
     /**
      * Makes queries DELAYED
      *
-     * @return \Database\Query
+     * @return \Double\Query
      */
     public function make_delayed() {
         $this->_delayed = true;
@@ -493,10 +492,10 @@ class Query {
     /**
      * Adds a SELECT query to the query
      *
-     * @param  Database\Query $query
-     * @return \Database\Query
+     * @param  Double\Query $query
+     * @return \Double\Query
      */
-    public function select(\Database\Query $query) {
+    public function select(\Double\Query $query) {
         $this->_sub_selects[] = $query;
         return $this;
     }

@@ -2,16 +2,15 @@
 /**
  * database.factory.php - Database factory class
  *
- * @package Database
+ * @package Double
  */
-
-namespace Database;
+namespace Double;
 
 class DB {
     /**
      * The database handle from the connection
      *
-     * @var Database\Connection
+     * @var Double\Connection
      */
     private $dbh = null;
 
@@ -36,7 +35,7 @@ class DB {
      * @param string $username
      * @param string $password
      * @param string $name
-     * @return Database\DB
+     * @return Double\DB
      */
     public function connect($host, $username, $password, $name) {
         if (!$this->dbh) {
@@ -57,7 +56,7 @@ class DB {
     /**
      * Gets the database connection
      *
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function get_connection() {
         return $this->dbh;
@@ -67,7 +66,7 @@ class DB {
      * Creates a query class to be run on the database
      *
      * @param string $type
-     * @return Database\Query
+     * @return Double\Query
      */
     public function query($type = "") {
         $this->queries++;
@@ -78,7 +77,7 @@ class DB {
      * Defines the prefix to use for tables
      *
      * @param string $prefix
-     * @return Database\DB
+     * @return Double\DB
      */
     public function set_prefix($prefix) {
         if (substr($prefix, -1) !== "_") $this->_prefix = $prefix."_";

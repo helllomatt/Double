@@ -2,9 +2,9 @@
 /**
  * connection.class.php - Creates a connection to a database
  *
- * @package Database
+ * @package Double
  */
-namespace Database;
+namespace Double;
 
 use Exception;
 use PDO;
@@ -75,7 +75,7 @@ class Connection {
      * @param string $username
      * @param string $password
      * @param string $name
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function __construct($host = "", $username = "", $password = "", $name = "") {
         $this->host     = $host;
@@ -89,7 +89,7 @@ class Connection {
      * Sets the driver, if it should be something other than MySQL
      *
      * @param string $driver
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function set_driver($driver) {
         $this->driver = $driver;
@@ -120,7 +120,7 @@ class Connection {
     /**
      * Establishes the connection to the database using the given information
      *
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function establish() {
         $this->validate_parameters();
@@ -159,7 +159,7 @@ class Connection {
      *
      * @param string $message
      * @param PDOException $exception
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function fail($message, \PDOException $exception) {
         $this->failure = [
@@ -202,7 +202,7 @@ class Connection {
     /**
      * Starts a database transaction
      *
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function start_transaction() {
         static::$dbh->beginTransaction();
@@ -212,7 +212,7 @@ class Connection {
     /**
      * Commits the query to the database
      *
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function commit() {
         static::$dbh->commit();
@@ -222,7 +222,7 @@ class Connection {
     /**
      * Rolls back any changes to the database
      *
-     * @return Database\Connection
+     * @return Double\Connection
      */
     public function roll_back() {
         static::$dbh->rollBack();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Double;
 
 class ConnectionTest extends \PHPUnit_Framework_TestCase {
 

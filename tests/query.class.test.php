@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Double;
 
 class QueryTest extends \PHPUnit_Framework_TestCase {
     public function setUp() {
@@ -8,7 +8,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function create_connection_mock() {
-        $mock = $this->getMockBuilder("\Database\Connection")
+        $mock = $this->getMockBuilder("\Double\Connection")
                 ->setMethods(["get", "get_driver", "prepare", "execute", "errorInfo"])
                 ->disableOriginalConstructor()
                 ->getMock();
@@ -230,7 +230,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $query = (new Query("insert"))
                     ->columns(["class_id", "teacher_id", "student_id"])
                     ->into("classes_rel", false)
-                    ->select((new \Database\Query("select"))
+                    ->select((new \Double\Query("select"))
                                 ->columns(["c.id as class_id", "t.id as teacher_id", "s.id as student_id"])
                                 ->from("classes as c", false)
                                 ->join("left", "teachers as t", "t.name = :t_name")

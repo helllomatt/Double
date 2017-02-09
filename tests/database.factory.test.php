@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Double;
 
 class FactoryTest extends \PHPUnit_Framework_TestCase {
     public function setUp() {
@@ -8,7 +8,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testConnect() {
-        $this->assertInstanceOf("\\Database\\Connection", $this->object->get_connection());
+        $this->assertInstanceOf("\\Double\\Connection", $this->object->get_connection());
     }
 
 
