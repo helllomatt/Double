@@ -1,7 +1,7 @@
 {
     "name": "helllomatt/double",
     "description": "Basic MySql database library",
-    "version": "1.0",
+    "version": "1.1",
     "keywords": ["database", "db", "mysql", "library"],
     "license": "MIT",
     "authors": [
